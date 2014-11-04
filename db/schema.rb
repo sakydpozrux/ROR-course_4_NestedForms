@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104225902) do
+ActiveRecord::Schema.define(version: 20141104233823) do
 
   create_table "cars", force: true do |t|
     t.string   "model"
@@ -25,7 +25,12 @@ ActiveRecord::Schema.define(version: 20141104225902) do
     t.string   "surname"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "car_id"
+    t.integer  "garage_id"
   end
+
+  add_index "drivers", ["car_id"], name: "index_drivers_on_car_id"
+  add_index "drivers", ["garage_id"], name: "index_drivers_on_garage_id"
 
   create_table "garages", force: true do |t|
     t.string   "city"
