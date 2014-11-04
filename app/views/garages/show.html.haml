@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b City:
+  = @garage.city
+%p
+  %b Address:
+  = @garage.address
+
+= link_to 'Edit', edit_garage_path(@garage)
+\|
+= link_to 'Back', garages_path
