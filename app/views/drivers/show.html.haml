@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @driver.name
+%p
+  %b Surname:
+  = @driver.surname
+
+= link_to 'Edit', edit_driver_path(@driver)
+\|
+= link_to 'Back', drivers_path
