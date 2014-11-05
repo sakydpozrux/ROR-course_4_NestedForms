@@ -6,11 +6,33 @@
         - @driver.errors.full_messages.each do |msg|
           %li= msg
 
+  %h2 Driver
   .field
     = f.label :name
     = f.text_field :name
   .field
     = f.label :surname
     = f.text_field :surname
+
+  = f.fields_for :car, @driver.car do |car_f|
+    %h2 Driver's car
+    .field
+      = car_f.label :model
+      = car_f.text_field :model
+
+    .field
+      = car_f.label :year
+      = car_f.text_field :year
+
+  = f.fields_for :garage, @driver.garage do |garage_f|
+    %h2 Driver's garage
+    .field
+      = garage_f.label :city
+      = garage_f.text_field :city
+
+    .field
+      = garage_f.label :address
+      = garage_f.text_field :address
+
   .actions
     = f.submit 'Save'

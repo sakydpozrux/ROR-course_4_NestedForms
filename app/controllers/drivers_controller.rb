@@ -15,16 +15,21 @@ class DriversController < ApplicationController
   # GET /drivers/new
   def new
     @driver = Driver.new
+    @driver.build_car
+    @driver.build_garage
+    init_other_common_instance_fields
   end
 
   # GET /drivers/1/edit
   def edit
+    init_other_common_instance_fields
   end
 
   # POST /drivers
   # POST /drivers.json
   def create
     @driver = Driver.new(driver_params)
+    init_other_common_instance_fields
 
     respond_to do |format|
       if @driver.save
@@ -40,6 +45,7 @@ class DriversController < ApplicationController
   # PATCH/PUT /drivers/1
   # PATCH/PUT /drivers/1.json
   def update
+    init_other_common_instance_fields
     respond_to do |format|
       if @driver.update(driver_params)
         format.html { redirect_to @driver, notice: 'Driver was successfully updated.' }
@@ -70,5 +76,10 @@ class DriversController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def driver_params
       params.require(:driver).permit(:name, :surname)
+    end
+
+    def init_other_common_instance_fields
+      @cars = Car.all
+      @garages = Garage.all
     end
 end
