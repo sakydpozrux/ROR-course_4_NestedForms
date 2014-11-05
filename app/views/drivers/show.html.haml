@@ -1,11 +1,28 @@
 %p#notice= notice
 
+%h2 Driver:
 %p
   %b Name:
   = @driver.name
 %p
   %b Surname:
   = @driver.surname
+
+%h2 Driver's car:
+%p
+  %b Model:
+  = @driver.car.model
+%p
+  %b Year:
+  = @driver.car.year
+
+%h2 Driver's garage:
+%p
+  %b City:
+  = @driver.garage.city
+%p
+  %b Address:
+  = @driver.garage.address
 
 = link_to 'Edit', edit_driver_path(@driver)
 \|

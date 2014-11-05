@@ -1,9 +1,11 @@
-%h1 Listing drivers
+%h1 Listing drivers with their Cars and Garages
 
 %table
   %tr
     %th Name
     %th Surname
+    %th Car
+    %th Garage
     %th
     %th
     %th
@@ -12,6 +14,8 @@
     %tr
       %td= driver.name
       %td= driver.surname
+      %td= "#{driver.car.model} (#{driver.car.year})"
+      %td= "#{driver.garage.city}, #{driver.garage.address}"
       %td= link_to 'Show', driver
       %td= link_to 'Edit', edit_driver_path(driver)
       %td= link_to 'Destroy', driver, :method => :delete, :data => { :confirm => 'Are you sure?' }
